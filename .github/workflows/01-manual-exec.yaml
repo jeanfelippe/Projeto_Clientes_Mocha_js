@@ -35,6 +35,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
-      # 4. Executa o comando de teste do seu package.json
+      # PASSO ALTERADO: Dá permissão de execução explicitamente para os binários locais e roda o teste
       - name: Executar testes com Mocha
-        run: npm test
+        run: |
+          chmod -R +x ./node_modules/.bin/
+          npm test
