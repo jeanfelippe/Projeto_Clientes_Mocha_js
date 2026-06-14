@@ -1,4 +1,4 @@
-name: "Pipeline - Manual e Agendada"
+name: "Pipeline - Manual , Agendada e Post-Deploy"
 
 # ----------------------------------------------------
 # GATILHOS / TRIGGERS
