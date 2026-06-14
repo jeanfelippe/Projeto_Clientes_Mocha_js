@@ -1,0 +1,40 @@
+name: "Pipeline - Manual e Agendada"
+
+# ----------------------------------------------------
+# GATILHOS / TRIGGERS
+# ----------------------------------------------------
+on:
+  # 1. Gatilho Manual (botão "Run workflow" no site)
+  workflow_dispatch:
+
+  # 2. Gatilho Agendado (Scheduled) usando a sintaxe Cron
+  # Neste exemplo, ele vai rodar automaticamente toda segunda-feira às 09:00 UTC (06:00 no horário de Brasília)
+  schedule:
+    - cron: '*/10 * * * *'
+
+# ----------------------------------------------------
+# TAREFAS / JOBS
+# ----------------------------------------------------
+jobs:
+  testes-mocha:
+    name: Rodar Testes Mocha
+    runs-on: ubuntu-latest # Roda na nuvem do GitHub
+
+    steps:
+      # 1. Faz o clone do seu projeto para a máquina virtual
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Instala o Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Ajuste para a versão do seu projeto se necessário
+
+      # 3. Instala as dependências do seu projeto (npm ou yarn)
+      - name: Instalar dependências
+        run: npm install
+
+      # 4. Executa o comando de teste do seu package.json
+      - name: Executar testes com Mocha
+        run: npm test

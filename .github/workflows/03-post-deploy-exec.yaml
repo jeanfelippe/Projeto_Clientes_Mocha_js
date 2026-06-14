@@ -1,0 +1,71 @@
+# CI de Nível 03 - Disparo Após a conclusão de outra pipeline
+
+# nome da pipeline
+name: "N3 -Execução por Deploy"
+
+# gatilhos / triggers - regras de disparo
+# gatilho manual = workflow_dispatch
+on:
+  workflow_run:
+    workflows: ['Execução Manual', 'Scheduled Execution'] # NOME EXATO das pipelines anteriores
+    types:
+      - completed 
+
+
+# tarefas dentro da pipeline = jobs
+jobs:
+
+ # JOB 1: Validação do código ajustada (Estratégia de Lista Branca)
+  lint:
+    name: Validar Código (Super-Linter)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Executar Super-Linter
+        uses: super-linter/super-linter@v7
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          # 1. Desativa a validação automática de TUDO
+          VALIDATE_ALL_CODEBASE: false
+          
+          # 2. Liga EXPLICITAMENTE apenas o que nos interessa
+          VALIDATE_YAML: true
+          VALIDATE_TYPESCRIPT_ES: true
+
+  # JOB 2: Seu teste e2e atual
+  e2e-tests:
+    name: Executando testes e2e
+    runs-on: ubuntu-latest
+    needs: lint # Crucial: Diz que este job só inicia se o job "lint" passar com sucesso!
+
+    # passos do job
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
+
+      # instalação do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      # instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
+        
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+        
+      # instalação dos Browsers do Playwright
+      - name: Instalando Browsers do Playwright
+        run: yarn playwright install
+        
+      # executar os testes e2e
+      - name: Executando testes e2e
+        run: yarn run e2e
