@@ -51,7 +51,7 @@ jobs:
           retention-days: 20             # O GitHub vai guardar esse arquivo por 20 dias
 
 
-          # NOVO RELATÓRIO NATIVO: Cria um sumário com gráficos no GitHub
+          # Um NOVO RELATÓRIO NATIVO: Cria um sumário com gráficos no GitHub
       - name: Publicar Relatório de Testes Nativo
         uses: dorny/test-reporter@v1
         if: always() # Roda mesmo se os testes falharem
