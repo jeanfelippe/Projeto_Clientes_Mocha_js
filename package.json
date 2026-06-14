@@ -4,13 +4,14 @@
   "description": "",
   "main": "projetoClientes.js",
   "scripts": {
-    "test": "npx mocha"
+    "test": "npx mocha --reporter mochawesome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "mocha": "^11.7.6"
+    "mocha": "^11.7.6",
+    "mochawesome": "^7.1.4"
   }
 }
