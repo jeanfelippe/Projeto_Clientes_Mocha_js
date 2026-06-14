@@ -49,3 +49,13 @@ jobs:
           name: relatorio-execucao-mocha # Nome do arquivo ZIP que você vai baixar
           path: mochawesome-report/      # Pasta onde o Mochawesome salvou o HTML
           retention-days: 20             # O GitHub vai guardar esse arquivo por 20 dias
+
+
+          # NOVO RELATÓRIO NATIVO: Cria um sumário com gráficos no GitHub
+      - name: Publicar Relatório de Testes Nativo
+        uses: dorny/test-reporter@v1
+        if: always() # Roda mesmo se os testes falharem
+        with:
+          name: Relatório de Testes Mocha # Nome que vai aparecer na aba de Jobs
+          path: test-results.xml          # Caminho do arquivo XML gerado
+          reporter: java-junit            # Formato do arquivo (JUnit)
