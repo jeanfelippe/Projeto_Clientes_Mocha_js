@@ -5,12 +5,12 @@
   "main": "projetoClientes.js",
   "scripts": {
     "test": "npx mocha"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "dependencies": {
-    "mocha": "^11.7.5"
+  "devDependencies": {
+    "mocha": "^11.7.6"
   }
 }
