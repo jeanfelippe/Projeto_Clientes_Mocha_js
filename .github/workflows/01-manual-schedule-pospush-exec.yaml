@@ -4,13 +4,17 @@ name: "Pipeline - Manual e Agendada"
 # GATILHOS / TRIGGERS
 # ----------------------------------------------------
 on:
-  # 1. Gatilho Manual (botão "Run workflow" no site)
+  # Gatilho 1: Dispara sempre que houver um envio de código (push)
+  push:
+    branches:
+      - main # Altere para 'master' se a sua branch principal tiver esse nome
+
+  # Gatilho 2: Permite que você clique no botão "Run workflow" no site do GitHub
   workflow_dispatch:
 
-  # 2. Gatilho Agendado (Scheduled) usando a sintaxe Cron
-  # Neste exemplo, ele vai rodar automaticamente toda segunda-feira às 09:00 UTC (06:00 no horário de Brasília)
+  # Gatilho 3: Faz a pipeline rodar sozinha de tempos em tempos (Schedule)
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/15 * * * *'
 
 # ----------------------------------------------------
 # TAREFAS / JOBS
