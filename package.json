@@ -4,7 +4,7 @@
   "description": "",
   "main": "projetoClientes.js",
   "scripts": {
-    "test": "npx mocha --reporter mochawesome --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml"
+    "test": "npx mocha --reporter mocha-multi-reporters --reporter-options configFile=config-reporters.json"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "mocha": "^11.7.6",
     "mocha-junit-reporter": "^2.2.1",
+    "mocha-multi-reporters": "^1.5.1",
     "mochawesome": "^7.1.4"
   }
 }
