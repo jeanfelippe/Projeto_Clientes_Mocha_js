@@ -13,7 +13,7 @@ describe('Testes de Login', () => {
         assert.strictEqual(resultado, 'usuario expirado');
     });
 
-    it('3 Informar que usuário não foi ecnontrado', function() {
+    it('3 Informar que usuário não foi encontrado', function() {
         const resultado = realizarLogin('usuario@naoexiste.com','111');
         assert.strictEqual(resultado, 'usuário não existe');
     });
