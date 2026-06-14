@@ -64,3 +64,8 @@ Para coletar, processar e exibir os resultados dos testes (mesmo em caso de falh
           name: Relatório de Testes Mocha
           path: test-results.xml
           reporter: java-junit
+
+
+
+Relatórios são gerados a cada execução e também são possíveis de serem acessados ao baixar o arquivo zip exibido no log
+![alt text](image.png)
