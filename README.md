@@ -30,9 +30,10 @@ Este projeto possui integração automatizada com o **GitHub Actions** para gara
 
 ### 🔄 Como Executar a Pipeline Manualmente
 
-1. Acesse a aba **Actions** no menu superior do repositório.
-2. Na barra lateral esquerda, selecione o workflow **"Pipeline Mocha - Manual e Agendada"**.
-3. Clique no botão **Run workflow**, selecione a branch desejada (ex: `main`) e clique no botão verde para iniciar.
+1. Acesse a aba **Actions** no menu superior do repositório no GitHub.
+2. Na barra lateral esquerda, clique na Pipeline 'Pipeline-Manual,Agendada e Post Deploy' 
+3. No lado direito da tela, clique no botão cinza **Run workflow**.
+4. Selecione a branch main para executar os testes  e clique no botão verde **Run workflow** para iniciar a execução.
 
 Além da execução manual, este workflow está configurado com um gatilho agendado (**Schedule**) para rodar testes periódicos de forma automatizada.
 
@@ -44,7 +45,11 @@ A pipeline está configurada para gerar e armazenar dois tipos de relatórios de
 
 ### 1. Relatório Visual (Mochawesome) e Gráficos Nativos (JUnit) no GitHub Actions
 
-Para coletar, processar e exibir os resultados dos testes (mesmo em caso de falhas), os seguintes passos foram integrados ao arquivo `.github/workflows/pipeline.yml`:
+Para coletar, processar e exibir os resultados dos testes (mesmo em caso de falhas), os seguintes passos foram integrados ao arquivo `.github/workflows/01-manual-schedule-pospush-exec.yml`:
+
+
+--Segue abaixo trecho da implementação dos relatórios no arquivo yml
+
 
 ```yaml
       # 1. Armazena o relatório visual do Mochawesome como artefato para download
@@ -71,11 +76,3 @@ Relatórios são gerados a cada execução e também são possíveis de serem ac
 ![alt text](image.png)
 
 
-## 🚀 Como Executar os Testes Manualmente
-
-Se você deseja rodar a esteira de testes sem precisar fazer um novo commit, siga o passo a passo abaixo:
-
-1. Acesse a aba **Actions** no menu superior do repositório no GitHub.
-2. Na barra lateral esquerda, clique na Pipeline 'Pipeline-Manual,Agendada e Post Deploy' 
-3. No lado direito da tela, clique no botão cinza **Run workflow**.
-4. Selecione a branch main para executar os testes  e clique no botão verde **Run workflow** para iniciar a execução.
