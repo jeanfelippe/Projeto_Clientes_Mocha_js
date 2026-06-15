@@ -69,3 +69,13 @@ Para coletar, processar e exibir os resultados dos testes (mesmo em caso de falh
 
 Relatórios são gerados a cada execução e também são possíveis de serem acessados ao baixar o arquivo zip exibido no log
 ![alt text](image.png)
+
+
+## 🚀 Como Executar os Testes Manualmente
+
+Se você deseja rodar a esteira de testes sem precisar fazer um novo commit, siga o passo a passo abaixo:
+
+1. Acesse a aba **Actions** no menu superior do repositório no GitHub.
+2. Na barra lateral esquerda, clique na Pipeline 'Pipeline-Manual,Agendada e Post Deploy' 
+3. No lado direito da tela, clique no botão cinza **Run workflow**.
+4. Selecione a branch main para executar os testes  e clique no botão verde **Run workflow** para iniciar a execução.
